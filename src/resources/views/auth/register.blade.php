@@ -9,7 +9,7 @@
     <div class="register-form__heading">
         <h2>会員登録</h2>
     </div>
-    <form class="register-form" action="" method="post">
+    <form class="register-form" action="/register" method="post">
         @csrf
         <div class="form__group">
             <div class="form__group-title">
@@ -62,7 +62,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="password" name="password-confirmation" />
+                    <input type="password" name="password_confirmation" />
                 </div>
                 <div class="form__error">
                     @error('password-confirmation')

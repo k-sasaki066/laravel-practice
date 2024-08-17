@@ -5,8 +5,13 @@
 @endsection
 
 @section('content')
+<p class="content-title">お疲れ様です、{{Auth::user()->name}}さん</p>
 <div class="attendance__alert">
-    
+    @if(session('message'))
+    <div class="attendance__alert--success">
+        {{ session('message') }}
+    </div>
+    @endif
 </div>
 
 <div class="attendance__content">

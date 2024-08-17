@@ -17,7 +17,7 @@
                 </a>
                 <nav>
                     <ul class="header-nav">
-                        
+                        @if(Auth::check())
                         <li class="header-nav__item">
                             <a href="/mypage" class="header-nav__link">マイページ</a>
                         </li>
@@ -27,7 +27,7 @@
                                 <button class="header-nav__button">ログアウト</button>
                             </form>
                         </li>
-                        
+                        @endif
                     </ul>
                 </nav>
             </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,10 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [UserController::class, 'index']);
+    Route::get('/', [AttendanceController::class, 'punch']);
 });
+
+Route::post('/work', [AttendanceController::class, 'work']);
 
 
 

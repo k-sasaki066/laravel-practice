@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::post('/work', [AttendanceController::class, 'work']);
+Route::get('/attendance/date', [AttendanceController::class, 'indexDate']);
 
 
 

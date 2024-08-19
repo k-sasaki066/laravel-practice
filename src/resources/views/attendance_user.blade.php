@@ -19,7 +19,7 @@
             <input class="search__input" type="text" name="search_name" placeholder="名前検索" value="" list="user_list">
             <datalist id="user_list">
                 
-                        <option value="{{ $user->name }}">{{ $user->name }}</option>
+                        <option value=""></option>
                     
             </datalist>
             <button class="search__button">検索</button>
@@ -35,7 +35,7 @@
                 <th class="table__header">休憩時間</th>
                 <th class="table__header">勤務時間</th>
             </tr>
-            @foreach ($users as $user)
+            
                 <tr class="table__row">
                     <td class="table__item">サンプル</td>
                     <td class="table__item">サンプル</td>
@@ -43,7 +43,7 @@
                     <td class="table__item">サンプル</td>
                     <td class="table__item">サンプル</td>
                 </tr>
-            @endforeach
+            
         </table>
     </div>
 @endsection

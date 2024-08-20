@@ -14,8 +14,8 @@ class Rest extends Model
         'end',
     ];
 
-    public function works()
+    public function attendance()
     {
-        return $this->belongsTo(Work::class);
+        return $this->belongsTo(Attendance::class);
     }
 }

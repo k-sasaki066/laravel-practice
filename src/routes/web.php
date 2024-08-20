@@ -22,10 +22,11 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [AttendanceController::class, 'punch']);
+    Route::post('/work', [AttendanceController::class, 'work']);
+    Route::get('/attendance/date', [AttendanceController::class, 'indexDate']);
 });
 
-Route::post('/work', [AttendanceController::class, 'work']);
-Route::get('/attendance/date', [AttendanceController::class, 'indexDate']);
+
 
 
 

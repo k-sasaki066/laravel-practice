@@ -41,7 +41,7 @@ class User extends Authenticatable
         // 'email_verified_at' => 'datetime',
     ];
 
-    public function works() {
-        return $this->hasMany(Work::class,'user_id');
+    public function attendances() {
+        return $this->hasMany(Attendance::class,'user_id');
     }
 }

@@ -36,11 +36,11 @@ class AttendanceController extends Controller
     public function work(Request $request)
     {
         $now_date = Carbon::now()->format('Y-m-d');
-        $now_time = Carbon::now()->format('H:i:s');
+        $now_time = Carbon::now();
         $user_id = Auth::user()->id;
         
         if($request->has('start_rest') || $request->has('end_rest')) {
-            $work_id = Attendance::where('user_id', $user_id)
+            $attendance_id = Attendance::where('user_id', $user_id)
             ->where('date', $now_date)
             ->first()
             ->id;
@@ -60,14 +60,14 @@ class AttendanceController extends Controller
         if($request->has('start_rest')){
             $attendance = new Rest();
             $attendance->start = $now_time;
-            $attendance->work_id = $work_id;
+            $attendance->attendance_id = $attendance_id;
             $status = 2;
             // dd($rest);
         }
 
         // 休憩終了
         if($request->has('end_rest')) {
-            $attendance = Rest::where('work_id', $work_id)
+            $attendance = Rest::where('attendance_id', $attendance_id)
             ->whereNotNull('start')
             ->whereNull('end')
             ->first();
@@ -96,8 +96,21 @@ class AttendanceController extends Controller
     // 勤怠表表示
     public function indexDate() {
         $user_id = Auth::user()->id;
+        $now_date = Carbon::now()->format('Y-m-d');
         $attendances = Attendance::where('user_id', $user_id)->get();
         // dd($attendances);
+        $time1 = new Carbon('2024-08-19 12:30:00');
+        $time2 = new Carbon('2024-08-19 13:40:25');
+
+        $diff = $time1 -> diffInSeconds($time2);
+        $hours = floor($diff / 3600);
+        $minutes = floor(($diff % 3600) / 60);
+        $seconds = $diff % 60;
+
+        echo '休憩時間は' .$hours .'時間' .$minutes .'分' .$seconds .'秒';
+
+
         return view('/attendance_date', compact('attendances'));
     }
 }
+
